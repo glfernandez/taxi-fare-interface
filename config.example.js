@@ -1,4 +1,4 @@
 window.APP_CONFIG = {
-  taxiFareApiUrl: 'https://taxifare.lewagon.ai/predict',
+  taxiFareApiUrl: 'https://YOUR_API_URL/predict',
   mapboxToken: ''
 };

@@ -13,6 +13,7 @@
 #fare {
   bottom: 0px;
   right: 0px;
+  border-top-left-radius: 12px;
 }
 
 #predicted-fare {
@@ -26,4 +27,33 @@
   width: 100%;
   border: 1px solid lightgrey;
   box-shadow: none;
+}
+
+.status-message {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.status-info {
+  color: #155724;
+}
+
+.status-success {
+  color: #0f5132;
+}
+
+.status-warning {
+  color: #7a4a00;
+}
+
+.status-error {
+  color: #842029;
+}
+
+#get-fare-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
 }

@@ -1,38 +1,57 @@
-# taxi-fare-interface
+# Taxi Fare Interface
 
-Frontend interface for NYC taxi fare prediction.
+Lightweight frontend for fare prediction APIs, with optional map routing and place autocomplete.
 
-## Overview
-This project provides a lightweight web UI where users can:
-- select pickup/dropoff locations,
-- set passenger count and pickup time,
-- call a fare prediction API,
-- view estimated fare and optional route visualization.
+## Features
+- Pickup/dropoff selection with Mapbox geocoder (optional).
+- Datetime and passenger count inputs.
+- GET request to configurable fare prediction API.
+- Predicted fare display with request status feedback.
+- Route visualization when a Mapbox token is configured.
 
-## Tech Stack
-- HTML/CSS/JavaScript
-- Mapbox GL + Geocoder
+## Stack
+- Vanilla HTML/CSS/JavaScript
+- Mapbox GL JS + Mapbox Geocoder
 - Flatpickr
 
 ## Configuration
-Set runtime values in `config.js`:
+Create or update `config.js`:
 
 ```js
 window.APP_CONFIG = {
-  taxiFareApiUrl: 'https://YOUR_API_URL/predict',
-  mapboxToken: 'YOUR_MAPBOX_PUBLIC_TOKEN'
+  taxiFareApiUrl: "https://YOUR_API_URL/predict",
+  mapboxToken: "YOUR_MAPBOX_PUBLIC_TOKEN"
 };
 ```
 
-A starter template is provided in `config.example.js`.
+Notes:
+- `mapboxToken` is optional. Without it, map and geocoders are disabled gracefully.
+- `taxiFareApiUrl` is required for fare prediction.
+- Only public browser-safe tokens should be used here.
 
 ## Run Locally
 ```bash
 python -m http.server 5001
 ```
-Open:
-- http://localhost:5001
 
-## Notes
-- No private credentials are committed.
-- If `mapboxToken` is empty, map/geocoder features are disabled but API prediction still works with default coordinates.
+Open:
+- `http://localhost:5001`
+
+## API Contract
+Expected query parameters:
+- `pickup_latitude`
+- `pickup_longitude`
+- `dropoff_latitude`
+- `dropoff_longitude`
+- `passenger_count`
+- `pickup_datetime`
+
+Expected response:
+```json
+{ "fare": 12.34 }
+```
+
+## Security and Privacy
+- No private secrets should be committed.
+- Keep any environment-specific settings out of version control.
+- Use `config.example.js` as the template baseline.
