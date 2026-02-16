@@ -37,6 +37,9 @@ python -m http.server 5001
 Open:
 - `http://localhost:5001`
 
+## Preview
+![Taxi fare UI preview](images/snapshot.png)
+
 ## API Contract
 Expected query parameters:
 - `pickup_latitude`
